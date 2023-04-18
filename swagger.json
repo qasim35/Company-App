@@ -1,0 +1,162 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Obenan API Project Swagger Documentation",
+      "version": "1.0.0",
+      "title": "Obenan API",
+      "contact": {
+        "email": "obenan@gmail.com"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "schemes": [
+      "http"
+    ],
+    "host": "localhost:4000",
+    "basePath": "/api/v1",
+    "paths": {
+      "/locationListing/all-location-in-radius": {
+        "get": {
+          "summary": "Get all the locations in radius",
+          "description": "Get all the locations in radius",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "query",
+              "name": "latitude",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "in": "query",
+              "name": "longitude",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "in": "query",
+              "name": "name",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {}
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {}
+            }
+          }
+        }
+      },
+      "/locationListing/attributes": {
+        "get": {
+          "summary": "Get all attributes",
+          "description": "Get all attributes",
+          "produces": [
+            "application/json"
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "schema": {
+                "type": "array",
+                "items": {}
+              }
+            },
+            "400": {
+              "description": "Invalid status value",
+              "schema": {}
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "DomainRegister": {
+        "required": [
+          "companyId",
+          "domains"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "companyId": {
+            "type": "string",
+            "example": "1"
+          },
+          "domains": {
+            "type": "array",
+            "example": [
+              "http://localhost:3000/",
+              "http://localhost:3001/"
+            ]
+          }
+        },
+        "xml": {
+          "name": "Domain"
+        }
+      },
+      "LoginUser": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "waseem25@obenan.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345"
+          }
+        },
+        "xml": {
+          "name": "Domain"
+        }
+      }
+    },
+    "securityDefinitions": {
+      "bearerAuth": {
+        "name": "Authorization",
+        "in": "header",
+        "type": "apiKey",
+        "description": "JWT Authorization header"
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ]
+  }
